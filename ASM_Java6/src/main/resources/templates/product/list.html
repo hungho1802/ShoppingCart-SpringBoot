@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::body})}">
+    <body>
+        <main class="home-product">
+
+            <!-- grid->row->column -->
+            <div class="row sm-gutter" >
+                <!-- Product Item -->
+
+                <div class="col p-2-4 t-4 m-6" th:unless="${#lists.isEmpty(items.pageList)}"
+                     th:each="p : ${items.pageList}">
+                    <a class="home-product-item" th:href="@{|/product/details/${p.id}|}">
+
+                        <div class="home-product-item__img"
+                            th:style="'background-image: url(/assets/images/' + ${p.image} +');'"></div>
+
+                        <h4 class="home-product-item__name" th:utext="${p.name}"></h4>
+
+                        <div class="home-product-item__price">
+                            <span class="home-product-item__price-old">$[[${p.price}]]</span>
+                            <span class="home-product-item__price-current">$[[${p.price - (p.price*0.05)}]]</span>
+
+                        </div>
+
+                        <div class="home-product-item__action">
+                            <!-- Liked: home-product-item__like--liked -->
+                            <span class="home-product-item__like home-product-item__like--liked">
+                                                    <i class="home-product-item__like-icon-empty far fa-heart"></i>
+                                                    <i class="home-product-item__like-icon-fill fas fa-heart"></i>
+                            </span>
+
+                            <div class="home-product-item__rating">
+                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="home-product-item__sold" th:text="${p.sold}"></span>
+                        </div>
+
+                        <div class="home-product-item__origin">
+                            <span class="home-product-item__brand">Whoo</span>
+                            <span class="home-product-item__origin-name" th:text="${p.origin}"></span>
+                        </div>
+
+                        <div class="home-product-item__favorite">
+                            <i class="fas fa-check"></i>
+                            <span>Yêu thích</span>
+                        </div>
+
+                        <div class="home-product-item__sale-off">
+                            <span class="home-product-item__sale-off-percent">5%</span>
+                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                        </div>
+                        <a th:attr="ng-click=@{|cart.add(${p.id})|}" style="display: block; text-align: center;padding-top: 8px;" class="btn btn--primary">
+                            <i class="fa fa-shopping-cart"></i> Add to Cart
+                        </a>
+                    </a>
+
+
+                </div>
+                <div class="col p-2-4 t-4 m-6" th:if="${#lists.isEmpty(items.pageList)}">
+                    No Product is available
+                </div>
+            </div>
+
+        </main>
+        <ul class="pagination pagination__home-product">
+            <li
+            th:class="${currentIndex == 1} ? 'pagination-item pagination-item--disabled' : 'pagination-item pagination-item--active'">
+                <a th:href="@{/home/index/1}" class="pagination-item__link">
+                    First
+                </a>
+            </li>
+            <li th:class="${currentIndex == 1} ? 'pagination-item pagination-item--disabled' : 'pagination-item pagination-item--active'">
+                <a th:href="@{|${baseUrl}${currentIndex - 1}|}" class="pagination-item__link">
+                    <i class="pagination-item__icon fas fa-angle-left"></i>
+                </a>
+            </li>
+
+            <li th:each="item : ${#numbers.sequence(beginIndex,endIndex)}"
+            th:class="${item == currentIndex} ? 'pagination-item pagination-item--active' : 'pagination-item'">
+                <a th:href="@{|${baseUrl}${item}|}" class="pagination-item__link">
+                    <span th:text="${item}">1</span>
+                </a>
+            </li>
+
+            <li
+                th:class="${currentIndex == totalPageCount} ? 'pagination-item pagination-item--disabled' : 'pagination-item'">
+                <a th:href="@{|${baseUrl}${currentIndex + 1}|}" title="Go to next page" class="pagination-item__link">
+                    <i class="pagination-item__icon fas fa-angle-right"></i>
+                </a>
+            </li>
+            <li th:class="${currentIndex == totalPageCount} ? 'pagination-item pagination-item--disabled' : 'pagination-item'">
+                <a th:href="@{|${baseUrl}${totalPageCount}|}" class="pagination-item__link">
+                    Last
+                </a>
+            </li>
+        </ul>
+
+    </body>
+</html>

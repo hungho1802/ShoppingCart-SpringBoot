@@ -1,0 +1,46 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">PRODUCT LIST</div>
+    <table class="table table-bordered table-hover">
+        <thead class="bg-success" style="font-variant: small-caps">
+            <tr>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Fullname</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in pager.items">
+                <td>{{item.username}}</td>
+                <td>*********</td>
+
+                <td>{{item.fullname}}</td>
+                <td>{{item.email}}</td>
+
+                <td>
+                    <div class="btn-group btn-group-xs">
+                        <button ng-click="edit(item)" class="btn btn-warning icon icon-pencil"></button>
+                        <button ng-click="delete(item)" class="btn btn-danger icon icon-trash"></button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="panel-footer text-center">
+        <button ng-click="pager.first()" class="btn btn-danger">
+            <b class="icon icon-arrow-up-circle"></b>
+        </button>
+        <button ng-click="pager.prev()" class="btn btn-warning">
+            <b class="icon icon-arrow-left-circle"></b>
+        </button>
+        <button  class="btn btn-success">{{pager.page + 1}} of {{pager.count}}</button>
+        <button ng-click="pager.next()" class="btn btn-primary">
+            <b class="icon icon-arrow-right-circle"></b>
+        </button>
+        <button ng-click="pager.last()" class="btn btn-danger">
+            <b class="icon icon-arrow-down-circle"></b>
+        </button>
+    </div>
+</div>

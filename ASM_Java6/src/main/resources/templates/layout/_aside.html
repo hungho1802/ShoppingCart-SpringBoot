@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="col p-2 t-3 m-0">
+      <nav class="category">
+        <h3 style="font-weight: bold;background: #3f51b5;padding-bottom: 10px;" class="category__heading">
+            <i class="fa fa-luggage-cart"></i> Danh mục</h3>
+
+        <ul class="category-list" th:each="cat : ${cates}">
+          <li class="category-item category-item--active">
+            <a th:href="@{|/home/index/1/?cid=${cat.id}|}" class="category-item__link btn btn--normal">
+              [[${cat.name}]]
+            </a>
+          </li>
+          <hr/>
+        </ul>
+      </nav>
+    </div>
+</body>
+</html>

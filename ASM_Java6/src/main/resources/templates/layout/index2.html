@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="dynamic(main)">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/assets/css/grid.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/base.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/main.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/responsive.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link id="favico" rel="icon" type="image/png" href="https://bizweb.dktcdn.net/100/327/577/files/2.png"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>J6 Online Shopping</title>
+    <link th:href="@{/assets/fonts/fontawesome-free-5.15.3/css/all.min.css}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
+<div class="wrapper">
+    <!--    Header top-->
+   <div th:replace="/layout/_header::header"></div>
+
+    <div class="app__container">
+        <div class="grid wide fix-wide-on-tablet">
+            <div class="row app__content sm-gutter">
+                <!-- List -->
+
+                <div class="col p-10 t-9 m-12">
+
+
+                    <!-- Product -->
+                    <div th:replace="${main}"></div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--    Footer-->
+    <div th:replace="/layout/_footer::footer"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script th:src="@{/assets/js/shopping-cart-app.js}"></script>
+</body>
+</html>

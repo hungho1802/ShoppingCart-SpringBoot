@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="dynamic(main)">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/assets/css/grid.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/base.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/main.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/responsive.css}">
+    <link th:rel="stylesheet" th:href="@{/assets/bootstrap-slider/css/bootstrap-slider.css}"/>
+
+<!--    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>-->
+<!--    <link th:rel="stylesheet" th:href="@{webjars/font-awesome/5.11.2/css/all.css} "/>-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link id="favico" rel="icon" type="image/png" href="https://bizweb.dktcdn.net/100/327/577/files/2.png"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>J6 Online Shopping</title>
+    <link th:href="@{/assets/fonts/fontawesome-free-5.15.3/css/all.min.css}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+</head>
+<body ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
+
+<div class="wrapper">
+    <!--    Header top-->
+   <div th:replace="/layout/_header::header"></div>
+
+    <div class="app__container">
+        <div class="grid wide fix-wide-on-tablet">
+            <div class="row app__content sm-gutter">
+                <!-- List -->
+                <div th:replace="/layout/_aside::div"></div>
+
+                <div class="col p-10 t-9 m-12">
+                    <!-- Filter -->
+                    <div th:replace="/layout/_nav::div"></div>
+
+                    <!-- Nav list mobile -->
+                    <div th:replace="/layout/_nav::nav"></div>
+
+                    <!-- Product -->
+                    <div id="products" th:replace="${main}"></div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!--    Footer-->
+    <div th:replace="/layout/_footer::footer"></div>
+</div>
+
+
+<!-- <div class="modal">
+    <div class="modal__overlay"></div>
+    <div class="modal__body"> -->
+<!-- Register form -->
+<!-- <div class="auth-form">
+    <div class="auth-form__container">
+        <div class="auth-form__header">
+            <h3 class="auth-form__heading">Đăng kí</h3>
+            <span class="auth-form__switch-btn">Đăng nhập</span>
+        </div>
+        <div class="auth-form__form">
+            <div class="auth-form__group">
+                <input type="text" class="auth-form__input" placeholder="Email của bạn">
+            </div>
+            <div class="auth-form__group">
+                <input type="password" class="auth-form__input" placeholder="Mật khẩu của bạn">
+            </div>
+            <div class="auth-form__group">
+                <input type="password" class="auth-form__input" placeholder="Nhập lại mật khẩu của bạn">
+            </div>
+        </div>
+
+        <div class="auth-form__aside">
+            <p class="auth-form__policy-text">
+                Bằng việc đăng kí, bạn đã đồng ý với F8 Shop về
+                <a href="#" class="auth-form__text-link">Điều khoản dịch vụ</a> &
+                <a href="#" class="auth-form__text-link">Chính sách bảo mật</a>
+            </p>
+        </div>
+
+        <div class="auth-form__controls">
+            <button class="btn btn--normal auth-form__controls-back">TRỞ LẠI</button>
+            <button class="btn btn--primary">ĐĂNG KÍ</button>
+        </div>
+    </div>
+
+    <div class="auth-form__socials">
+        <a href="#" class="auth-form__socials--facebook btn btn--size-s btn--width-icon">
+            <i class="auth-form__socials-icon fab fa-facebook-square"></i>
+            <span class="auth-form__social-title">
+                Kết nối với facebook
+            </span>
+        </a>
+        <a href="#" class="auth-form__socials--google btn btn--size-s btn--width-icon">
+            <i class="auth-form__socials-icon fab fa-google auth-form__socials-icon--google-color"></i>
+            <span class="auth-form__social-title">
+                Kết nối với google
+            </span>
+        </a>
+    </div>
+</div> -->
+
+<!-- Login form -->
+<!-- <div class="auth-form">
+    <div class="auth-form__container">
+        <div class="auth-form__header">
+            <h3 class="auth-form__heading">Đăng nhập</h3>
+            <span class="auth-form__switch-btn">Đăng kí</span>
+        </div>
+        <div class="auth-form__form">
+            <div class="auth-form__group">
+                <input type="text" class="auth-form__input" placeholder="Email của bạn">
+            </div>
+            <div class="auth-form__group">
+                <input type="password" class="auth-form__input" placeholder="Mật khẩu của bạn">
+            </div>
+        </div>
+
+        <div class="auth-form__aside">
+            <div class="auth-form__help">
+                <a href="#" class="auth-form__help-link auth-form__help-forgot">
+                    Quên mật khẩu
+                </a>
+                <span class="auth-form__help-separate"></span>
+                <a href="#" class="auth-form__help-link">
+                    Cần trợ giúp?
+                </a>
+            </div>
+        </div>
+
+        <div class="auth-form__controls">
+            <button class="btn btn--normal auth-form__controls-back">TRỞ LẠI</button>
+            <button class="btn btn--primary">ĐĂNG NHẬP</button>
+        </div>
+    </div>
+
+    <div class="auth-form__socials">
+        <a href="#" class="auth-form__socials--facebook btn btn--size-s btn--width-icon">
+            <i class="auth-form__socials-icon fab fa-facebook-square"></i>
+            <span class="auth-form__social-title">
+                Kết nối với facebook
+            </span>
+        </a>
+        <a href="#" class="auth-form__socials--google btn btn--size-s btn--width-icon">
+            <i class="auth-form__socials-icon fab fa-google auth-form__socials-icon--google-color"></i>
+            <span class="auth-form__social-title">
+                Kết nối với google
+            </span>
+        </a>
+    </div>
+</div>
+</div>
+</div> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:rel="stylesheet" th:src="@{/assets/bootstrap-slider/bootstrap-slider.js}"></script>
+
+<script>
+    $("#priceRange").slider({});
+    $("#priceRange").on("slideStop", function (stopEvent) {
+        var range = stopEvent.value;
+        var min = range[0];
+        $("#rangeMin").val(range[0]);
+        var max = range[1];
+        $("#rangeMax").val(range[1]);
+
+        if(min != 5 && max != 100){
+            $.get("/products?min=" + range[0] + "&max=" + range[1], function (data) {
+
+                $(document).ready(function () {
+
+                        location.reload(false);
+
+
+                });
+
+            });
+        }
+    });
+</script>
+
+<script th:src="@{/assets/js/shopping-cart-app.js}"></script>
+
+</body>
+</html>

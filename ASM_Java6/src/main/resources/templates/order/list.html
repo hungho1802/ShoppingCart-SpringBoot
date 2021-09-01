@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/layout/index2 :: dynamic(~{::main})}">
+
+<body>
+<main>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <div class="panel panel-primary text-center" style="width: 1200px;">
+        <div class="panel-heading"><h3 class="text-white">Your Orders Purchased</h3></div>
+        <table class="table table-hover table-bordered table-striped">
+            <thead >
+                <tr>
+                    <th style="text-align: center">No.</th>
+                    <th style="text-align: center">Order No.</th>
+                    <th style="text-align: center">Order Date</th>
+                    <th style="text-align: center">Shipping address</th>
+                    <th style="text-align: center"></th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr th:each="order,state: ${orders}">
+                <td>[[${state.index}]]</td>
+                <td>[[${order.id}]]</td>
+                <td>[[${order.createDate}]]</td>
+                <td>[[${order.address}]]</td>
+                <td>
+                    <a th:href="@{|/order/details/${order.id}|}" class="btn btn-default">
+                        <b class="fa fa-search"></b>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+</main>
+
+</body>
+</html>

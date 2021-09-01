@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/layout/index2 :: dynamic(~{::main})}">
+
+<body>
+<main th:object="${order}">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <div class="panel panel-primary text-center" style="width: 1200px;">
+        <div class="panel-heading"><h3 class="text-white">Order Information</h3></div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <div>Order Number: </div>
+                    <input th:field="*{id}" class="form-control btn--disabled" readonly/>
+                </div>
+                <div class="form-group col-sm-4">
+                    <div>Purchaser: </div>
+                    <input th:field="*{account.username}" class="form-control" readonly/>
+                </div>
+                <div class="form-group col-sm-4">
+                    <div>Purchased Date: </div>
+                    <input th:field="*{createDate}" class="form-control" readonly/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    <div>Shipping Address: </div>
+                    <textarea th:field="*{address}" class="form-control" readonly></textarea>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="panel panel-primary text-center" style="width: 1200px;">
+        <div class="panel-heading"><h3 class="text-white">Order Lines</h3></div>
+        <table class="table table-hover table-bordered table-striped">
+            <thead >
+            <tr>
+                <th style="text-align: center">Id</th>
+                <th style="text-align: center">Name</th>
+                <th style="text-align: center">Price</th>
+                <th style="text-align: center">Quantity</th>
+                <th style="text-align: center">Amount</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="detail: *{orderDetails}" th:object="${detail}">
+                <td>[[*{product.id}]]</td>
+                <td>[[*{product.name}]]</td>
+                <td>$[[*{#numbers.formatDecimal(price,0,'COMMA',2,'POINT')}]]</td>
+                <td>[[*{quantity}]]</td>
+                <td>$[[*{#numbers.formatDecimal(price*quantity,0,'COMMA',2,'POINT')}]]</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+</main>
+
+</body>
+</html>

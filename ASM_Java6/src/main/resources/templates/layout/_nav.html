@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--    Filter-->
+    <div class="home-filter hide-on-mobile-tablet">
+      <span class="home-filter__label">Sắp xếp theo</span>
+      <a th:href="@{/home/index/1?sort=popular}" class="home-filter__btn btn">Phổ biến</a>
+      <a th:href="@{/home/index/1?sort=newest}" class="home-filter__btn btn btn--primary">Mới nhất</a>
+      <a th:href="@{/home/index/1?sort=sellest}" class="home-filter__btn btn">Bán chạy</a>
+
+      <div class="home-filter__btn btn">
+        <form method="post" th:action="@{/products}">
+          <div class="form-control">
+            <b class="mr-2">$ 1</b>
+            <input id="priceRange" type="text" class="span2" value=""
+                   data-slider-min="1"
+                   data-slider-max="100" data-slider-step="2"
+                   data-slider-value="[5,100]" data-slider-tooltip="show"/>
+            <b
+                    class="ml-2">$ 100</b>
+
+            <input type="hidden" name="min" id="rangeMin"/>
+            <input type="hidden" name="max" id="rangeMax"/>
+          </div>
+
+        </form>
+      </div>
+
+
+    </div>
+
+    <!--    Nav mobile-->
+    <nav class="mobile-category">
+      <ul class="mobile-category__list">
+        <li class="mobile-category__item">
+          <a href="#" class="mobile-category__link">Thiết bị gia dụng sịn vc</a>
+        </li>
+        <li class="mobile-category__item">
+          <a href="#" class="mobile-category__link">Dụng cụ điện thử vip lắm ă</a>
+        </li>
+        <li class="mobile-category__item">
+          <a href="#" class="mobile-category__link">Đồ thể thao nam nữ bê đê</a>
+        </li>
+        <li class="mobile-category__item">
+          <a href="#" class="mobile-category__link">Thiết bị gia dụng sịn vc</a>
+        </li>
+        <li class="mobile-category__item">
+          <a href="#" class="mobile-category__link">Dụng cụ điện thử vip lắm ă</a>
+        </li>
+        <li class="mobile-category__item">
+          <a href="#" class="mobile-category__link">Đồ thể thao nam nữ bê đê</a>
+        </li>
+        <li class="mobile-category__item">
+          <a href="#" class="mobile-category__link">Thiết bị gia dụng sịn vc</a>
+        </li>
+        <li class="mobile-category__item">
+          <a href="#" class="mobile-category__link">Dụng cụ điện thử vip lắm ă</a>
+        </li>
+        <li class="mobile-category__item">
+          <a href="#" class="mobile-category__link">Đồ thể thao nam nữ bê đê</a>
+        </li>
+        <li class="mobile-category__item">
+          <a href="#" class="mobile-category__link">Thiết bị gia dụng sịn vc</a>
+        </li>
+        <li class="mobile-category__item">
+          <a href="#" class="mobile-category__link">Dụng cụ điện thử vip lắm ă</a>
+        </li>
+        <li class="mobile-category__item">
+          <a href="#" class="mobile-category__link">Đồ thể thao nam nữ bê đê</a>
+        </li>
+        <li class="mobile-category__item">
+          <a href="#" class="mobile-category__link">Thiết bị gia dụng sịn vc</a>
+        </li>
+        <li class="mobile-category__item">
+          <a href="#" class="mobile-category__link">Dụng cụ điện thử vip lắm ă</a>
+        </li>
+        <li class="mobile-category__item">
+          <a href="#" class="mobile-category__link">Đồ thể thao nam nữ bê đê</a>
+        </li>
+      </ul>
+    </nav>
+</body>
+</html>

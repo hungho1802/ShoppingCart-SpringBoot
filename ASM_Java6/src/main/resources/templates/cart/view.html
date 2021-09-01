@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                th:replace="~{/layout/index2 :: dynamic(~{::main})}">
+<body>
+    <main>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+        <div class="panel panel-primary text-center" style="width: 1200px;" th:fragment="shopping-cart">
+            <div class="panel-heading"><h3 class="text-white">Shopping Cart</h3></div>
+
+            <div class="panel-body">
+                <table class="table table-hover table-bordered table-striped">
+                    <thead >
+                        <tr>
+                            <th style="text-align: center">Image</th>
+                            <th style="text-align: center">Name</th>
+                            <th style="text-align: center">Price</th>
+                            <th style="text-align: center">Quantity</th>
+                            <th style="text-align: center">Amount</th>
+                            <th style="text-align: center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in cart.items">
+                            <td><image th:width="80px" th:height="60px" th:src="@{/assets/images/{{item.image}}}"/></td>
+                            <td>{{item.name}}</td>
+                            <td>${{item.price|number:2}}</td>
+                            <td><input ng-change="cart.saveToLocalStorage()" ng-model="item.qty" type="number" min="1" style="width: 50px;"> </td>
+                            <td>${{item.qty*item.price|number:2}}</td>
+                            <td>
+                                <button ng-click="cart.remove(item.id)" class="btn btn-danger">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel footer text-right" style="margin-right: 20px">
+                <button ng-click="cart.clear()" class="btn btn-info">
+                    <i class="fa fa-adjust"></i> Remove all
+                </button>
+                <a style="padding-top: 8px" th:href="@{/order/checkout}" class="btn btn--primary">
+                    <i class="fa fa-shopping-cart"></i> Checkout
+                </a>
+
+            </div>
+        </div>
+
+
+
+    </main>
+
+</body>
+</html>

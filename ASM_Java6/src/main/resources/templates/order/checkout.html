@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/layout/index2 :: dynamic(~{::main})}">
+
+<body>
+<main>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <div th:replace="~{/cart/view :: shopping-cart}"></div>
+    <div class="panel panel-primary text-center" style="width: 1200px;">
+        <div class="panel-heading">
+            <h3 class="text-white">Order Purchasing</h3>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <div>Purchaser: </div>
+                    <div class="form-control" id="username"><b>[[${#request.remoteUser}]]</b></div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <div>Order Date: </div>
+                    <div class="form-control"><b>{{order.createDate|date:'dd-MM-yyyy'}}</b></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    <div>Shipping Address: </div>
+                    <textarea ng-model="order.address" class="form-control"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="panel footer text-right" style="margin-right: 20px">
+            <button ng-click="order.purchase()" class="btn btn-success">
+                <i class="fa fa-check"></i> Purchase
+            </button>
+        </div>
+    </div>
+
+
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="header__cart">
+    <div class="header__cart-wrap">
+        <i class="header__cart-icon fas fa-shopping-cart"></i>
+        <span class="header__cart-notice">{{cart.count}}</span>
+
+        <!-- No cart: header__cart-list--no-cart -->
+        <div class="header__cart-list">
+            <img th:src="@{/assets/img/no-cart.png}" alt="" class="header__cart-no-cart-img">
+            <span class="header__cart-list--no-cart-msg">Chưa có sản phẩm</span>
+
+            <h4 class="header__cart-heading">Sản phẩm đã thêm</h4>
+            <ul class="header__cart-list-item">
+                <li class="header__cart-item" ng-repeat="item in cart.items">
+                    <img th:src="@{/assets/images/{{item.image}}}" alt="{{item.name}}" class="header__cart-img">
+                    <div class="header__cart-item-info">
+                        <div class="header__cart-item-head">
+                            <h5 class="header__cart-item-name">{{item.name}}</h5>
+                            <div class="header__cart-item-price-wrap">
+                                <span class="header__cart-item-price">${{item.price}}</span>
+                                <span class="header__cart-item-multiply">x</span>
+                                <span class="header__cart-item-qnt">{{item.qty}}</span>
+                            </div>
+                        </div>
+
+                        <div class="header__cart-item-body">
+                                                <span class="header__cart-item-description">
+                                                    {{item.name}}
+                                                </span>
+                            <a ng-click="cart.remove(item.id)" class="header__cart-item-del">
+                                                   Xóa
+                                                </a>
+                        </div>
+                    </div>
+                </li>
+<!--                <li class="header__cart-item">-->
+<!--                    <img src="https://cf.shopee.vn/file/4fc67eef124763f71f8a1a928b2f209d" alt="Bộ kem sáng da mềm mịn" class="header__cart-img">-->
+<!--                    <div class="header__cart-item-info">-->
+<!--                        <div class="header__cart-item-head">-->
+<!--                            <h5 class="header__cart-item-name">Váy polo cổ đức cực năng động</h5>-->
+<!--                            <div class="header__cart-item-price-wrap">-->
+<!--                                <span class="header__cart-item-price">1.305.000đ</span>-->
+<!--                                <span class="header__cart-item-multiply">x</span>-->
+<!--                                <span class="header__cart-item-qnt">1</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        <div class="header__cart-item-body">-->
+<!--                                                <span class="header__cart-item-description">-->
+<!--                                                    Khách chưa rõ size số vui lòng nt cho shop-->
+<!--                                                </span>-->
+<!--                            <span class="header__cart-item-del">-->
+<!--                                                    Xóa-->
+<!--                                                </span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </li>-->
+
+            </ul>
+
+            <div class="header__cart-view-cart">
+                <p style="color: yellow" class="header__cart-btn btn btn--disabled">
+                    Total: ${{cart.amount|number: 2}}
+                </p>
+                <a th:href="@{/cart/view}" class="header__cart-btn btn btn--primary">Xem giỏ hàng</a>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
